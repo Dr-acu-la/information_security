@@ -355,10 +355,9 @@ file1.txt       file2.txt       file3.txt
 
 ## Screenshots
 
-![Part 1](screenshots/part1.png)
-![curl](screenshots/curl.png)
-![tar](screenshots/tar.png)
-
+   ![Part 1](part1.png)
+   ![curl](curl.png)
+   ![tar](tar.png)
 ## Conclusion
 
 In this lab I learned how to navigate the file system, create, copy, move and delete files and directories, and change file permissions. I used `curl` to send GET and POST requests to an API and read the response headers, and I learned to use `--help` and `man` to discover new commands such as `tar`. From a security point of view, I saw that permissions like `777` are dangerous, and that `rm` deletes files permanently.
