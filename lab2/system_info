@@ -1,0 +1,7 @@
+#!/bin/bash
+# system_info - shows basic information about the system
+
+echo "Hostname: $(hostname)"
+echo "Current User: $(whoami)"
+echo "Disk Space:"
+df -h
