@@ -13,3 +13,4 @@ Lab works for the AUCA course **COM-424.1 Information Security**.
 | 1 | [Comprehending UNIX terminal commands](lab1/) | Files and directories, permissions, `curl`, `tar` |
 | 2 | [Custom UNIX-based commands](lab2/) | Custom commands, `$PATH`, shell scripts |
 | 3 | [Toy shell](lab3/) | Python REPL, file timestamps, broken symlink bug fix |
+| 4 | [Comprehending phishing](lab4/) | Attack analysis, safe awareness demo, phishing detector |
