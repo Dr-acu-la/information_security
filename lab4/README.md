@@ -174,14 +174,7 @@ No phishing indicators found.
 
 ---
 
-## Ethics & legality
 
-Running a real phishing attack against people — collecting their passwords or card
-data, or hosting a look-alike domain — is a crime in essentially every country
-(fraud, unauthorised data collection, identity theft) and violates every
-university acceptable-use policy. The purpose of this lab is to **recognise and
-defend against** these attacks, not to carry them out. Everything here is either
-analysis of a given example, a non-functional teaching demo, or a defensive tool.
 
 ## Conclusion
 
