@@ -1,0 +1,14 @@
+From: Instagram Security <no-reply@instagramm-security.com>
+Subject: Urgent: Your account will be suspended
+
+Hello,
+
+We detected unusual activity on your account. Your account will be
+suspended within 24 hours unless you verify your identity immediately.
+
+<a href="http://instagramm.com/login">https://www.instagram.com/login</a>
+
+If you didn't request this, please verify your payment details to keep
+your account active.
+
+Instagram Security Team

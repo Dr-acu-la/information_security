@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phishing Awareness Demo</title>
+<style>
+  :root {
+    --bg: #eef1f5;
+    --card: #ffffff;
+    --accent: #1a66ff;
+    --ink: #1a2230;
+    --muted: #6b7686;
+    --warn: #b00020;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  /* Visible banner so this can never be mistaken for a real page */
+  .demo-banner {
+    width: 100%;
+    max-width: 640px;
+    background: repeating-linear-gradient(45deg, #ffe08a, #ffe08a 12px, #ffd45e 12px, #ffd45e 24px);
+    color: #5a4600;
+    border: 2px solid #d9a400;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 360px;
+    padding: 28px 26px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .brand .logo {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), #6aa3ff);
+  }
+  .brand h1 { font-size: 20px; margin: 0; }
+  .tag { color: var(--muted); font-size: 13px; margin: 0 0 20px; }
+  label { display:block; font-size: 12px; color: var(--muted); margin: 12px 0 4px; }
+  input {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d4dae3;
+    border-radius: 7px;
+    font-size: 14px;
+  }
+  .row { display: flex; gap: 10px; }
+  .btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(16,22,34,0.92);
+    color: #fff;
+    padding: 24px;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .overlay.show { display: flex; }
+  .overlay h2 { color: #ff6b6b; font-size: 26px; margin: 0 0 12px; }
+  .overlay p { max-width: 520px; font-size: 16px; line-height: 1.6; color: #e6ebf2; }
+  .overlay .reveal {
+    margin-top: 16px;
+    background: #22304a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-family: monospace;
+    font-size: 14px;
+    color: #ffd45e;
+  }
+  .overlay button {
+    margin-top: 22px;
+    padding: 10px 20px;
+    background: #fff;
+    color: var(--ink);
+    border: none;
+    border-radius: 7px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="demo-banner">
+    🎓 SECURITY AWARENESS DEMO &nbsp;•&nbsp; NovaBank is not a real company &nbsp;•&nbsp; This page stores and sends NOTHING
+  </div>
+
+  <div class="card">
+    <div class="brand">
+      <div class="logo"></div>
+      <h1>NovaBank</h1>
+    </div>
+    <p class="tag">Verify your card to continue</p>
+
+    <form id="demoForm">
+      <label for="name">Cardholder name</label>
+      <input type="text" id="name" placeholder="Jane Doe" autocomplete="off">
+
+      <label for="card">Card number</label>
+      <input type="text" id="card" placeholder="0000 0000 0000 0000" autocomplete="off" inputmode="numeric">
+
+      <div class="row">
+        <div style="flex:1">
+          <label for="exp">Expiry</label>
+          <input type="text" id="exp" placeholder="MM/YY" autocomplete="off">
+        </div>
+        <div style="flex:1">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="123" autocomplete="off">
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Verify card</button>
+    </form>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <h2>⚠️ You just got phished.</h2>
+    <p>
+      If this had been a real phishing page, everything you typed would have been
+      sent to an attacker's server the instant you clicked the button — before any
+      "error" or redirect you might see.
+    </p>
+    <div class="reveal" id="reveal"></div>
+    <p style="margin-top:18px; font-size:14px; color:#9fb0c7;">
+      This demo captured nothing, stored nothing, and sent nothing. The text above
+      came only from your own browser and disappears when you close the page.
+      <br><br>
+      <strong>How to stay safe:</strong> check the real domain in the address bar,
+      never enter card details from an email link, and look for the urgency and
+      look-alike-domain tricks that got you here.
+    </p>
+    <button onclick="location.reload()">Try again / reset</button>
+  </div>
+
+<script>
+// Pure client-side teaching demo.
+// There is NO server, NO fetch, NO storage. Submitted text is shown back to the
+// user only to make the point, then forgotten on reload.
+document.getElementById("demoForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  var name = document.getElementById("name").value || "(empty)";
+  var card = document.getElementById("card").value || "(empty)";
+  var cvv  = document.getElementById("cvv").value  || "(empty)";
+
+  // Mask most of the card so even on screen we don't display a full number
+  var masked = card.replace(/\s+/g, "");
+  if (masked.length > 4) {
+    masked = "•".repeat(masked.length - 4) + masked.slice(-4);
+  }
+
+  document.getElementById("reveal").textContent =
+    "An attacker would now hold: " + name + " / " + masked + " / CVV " +
+    (cvv === "(empty)" ? "(empty)" : "•".repeat(cvv.length));
+
+  document.getElementById("overlay").classList.add("show");
+});
+</script>
+</body>
+</html>

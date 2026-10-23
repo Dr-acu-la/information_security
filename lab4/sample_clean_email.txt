@@ -1,0 +1,5 @@
+From: Maria <maria@university.edu>
+Subject: Notes from today's lecture
+
+Hi, here are the notes from the networking class. See you tomorrow at the library.
+Maria
