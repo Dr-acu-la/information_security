@@ -21,3 +21,4 @@ Lab works for the AUCA course **COM-424.1 Information Security**.
 | 9 | [Package management](lab9/) | apt, dependencies, nginx install/remove |
 | 10 | [Configuring NGINX](lab10/) | server blocks, reverse proxy, proxy_pass |
 | 11 | [Installing from source](lab11/) | configure/make, cmake, git, compiling C |
+| 12 | [Brute-force attacks](lab12/) | Hydra, dictionary attacks, cupp, defences |
