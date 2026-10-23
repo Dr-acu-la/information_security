@@ -18,3 +18,4 @@ Lab works for the AUCA course **COM-424.1 Information Security**.
 | 6 | [Permissions in Linux](lab6/) | rwx, chmod, chown, chgrp |
 | 7 | [Crontab in Linux](lab7/) | cron scheduling, shell & Python jobs |
 | 8 | [Vim editor](lab8/) | modes, editing commands, cheat sheet |
+| 9 | [Package management](lab9/) | apt, dependencies, nginx install/remove |
