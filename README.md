@@ -16,3 +16,4 @@ Lab works for the AUCA course **COM-424.1 Information Security**.
 | 4 | [Comprehending phishing](lab4/) | Attack analysis, safe awareness demo, phishing detector |
 | 5 | [User management in Linux](lab5/) | Users, groups, /etc/passwd, /etc/shadow |
 | 6 | [Permissions in Linux](lab6/) | rwx, chmod, chown, chgrp |
+| 7 | [Crontab in Linux](lab7/) | cron scheduling, shell & Python jobs |
